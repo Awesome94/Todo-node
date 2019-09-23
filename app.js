@@ -54,6 +54,14 @@ app.get('api/v1/todos/:id', (req, res)=>{
     });
 });
 
+app.delete('api/v1/todos/:id', (req, res)=>{
+    const id = parseInt(req.params.id, 10);
+    db.map((todo, index)=>{
+        if(todo.id===id){
+            todo.pop(todo)
+        }
+    })
+})
 app.listen(PORT, ()=>{
     console.log(`App is running  on ${PORT}`)
 });
